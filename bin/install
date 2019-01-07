@@ -7,7 +7,7 @@ install() {
   build_dir=$(mktemp -d)
   cd $build_dir
 
-  curl -fSL -JO https://github.com/php/php-src/archive/php-$version.tar.gz
+  curl -fSL -JO https://github.com/php/php-src/archive/$version.tar.gz
   tar -xzf php*.gz
   rm -rf php*.gz
   cd php*
