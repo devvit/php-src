@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+install() {
+  version=$2
+  install_dir=$3
+
+  build_dir=$(mktemp -d)
+  cd $build_dir
+
+  curl -fSL -JO https://github.com/php/php-src/archive/php-$version.tar.gz
+  tar -xzf php*.gz
+  rm -rf php*.gz
+  cd php*
+
+  platform=$(uname)
+  if [ "$platform" == 'Darwin' ]; then
+    # export CFLAGS='-I/usr/X11/include -L/usr/X11/lib'
+    # --with-gd=/usr/local --with-jpeg-dir=/usr/local --with-png-dir=/usr/local --with-xpm-dir=/usr/X11
+    ./configure --prefix=$ASDF_INSTALL_PATH \
+      --enable-fpm \
+      --enable-sockets \
+      --enable-bcmath \
+      --with-iconv=/usr/local/opt/libiconv \
+      --with-zlib-dir=/usr/local/opt/zlib \
+      --with-libxml-dir=/usr/local/opt/libxml2 \
+      --enable-opcache=no \
+      --enable-mbstring \
+      --with-curl \
+      --with-openssl=/usr/local/opt/openssl \
+      --with-mysqli=shared,mysqlnd \
+      --with-pdo-mysql=shared,mysqlnd \
+      --with-mysql-sock=/tmp/mysql.sock
+  else
+    ./configure --prefix=$ASDF_INSTALL_PATH \
+      --enable-fpm \
+      --enable-sockets \
+      --enable-bcmath \
+      --with-zlib \
+      --enable-opcache=no \
+      --enable-mbstring \
+      --with-curl \
+      --with-openssl \
+      --with-mysqli=shared,mysqlnd \
+      --with-pdo-mysql=shared,mysqlnd \
+      --with-mysql-sock=/tmp/mysql.sock
+  fi
+
+  make -s install || exit 1
+}
+
+install $ASDF_INSTALL_TYPE $ASDF_INSTALL_VERSION $ASDF_INSTALL_PATH
