@@ -26,7 +26,9 @@ install() {
       --enable-opcache=no \
       --enable-mbstring \
       --with-curl \
-      --with-openssl=/usr/local/opt/openssl \
+      --with-pgsql \
+      --with-pdo-pgsql \
+      --with-openssl-dir=/usr/local/opt/openssl \
       --with-mysqli=shared,mysqlnd \
       --with-pdo-mysql=shared,mysqlnd \
       --with-mysql-sock=/tmp/mysql.sock
