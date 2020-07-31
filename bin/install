@@ -27,7 +27,7 @@ install() {
       --enable-opcache=no \
       --enable-mbstring \
       --with-curl \
-      --with-pgsql \
+      --with-pgsql=$(dirname $(pg_config --bindir)) \
       --with-pdo-pgsql \
       --with-openssl-dir=/usr/local/opt/openssl \
       --with-mysqli=shared,mysqlnd \
