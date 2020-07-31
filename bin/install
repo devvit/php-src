@@ -14,15 +14,16 @@ install() {
 
   platform=$(uname)
   if [ "$platform" == 'Darwin' ]; then
+    MACOS_SDK=$(xcrun --show-sdk-path)/usr
     # export CFLAGS='-I/usr/X11/include -L/usr/X11/lib'
     # --with-gd=/usr/local --with-jpeg-dir=/usr/local --with-png-dir=/usr/local --with-xpm-dir=/usr/X11
     ./configure --prefix=$ASDF_INSTALL_PATH \
       --enable-fpm \
       --enable-sockets \
       --enable-bcmath \
-      --with-iconv=/usr/local/opt/libiconv \
-      --with-zlib-dir=/usr/local/opt/zlib \
-      --with-libxml-dir=/usr/local/opt/libxml2 \
+      --with-iconv=$MACOS_SDK \
+      --with-zlib-dir=$MACOS_SDK \
+      --with-libxml-dir=$MACOS_SDK \
       --enable-opcache=no \
       --enable-mbstring \
       --with-curl \
