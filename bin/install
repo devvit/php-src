@@ -16,6 +16,7 @@ install() {
   if [ "$platform" == 'Darwin' ]; then
     MACOS_SDK=$(xcrun --show-sdk-path)/usr
     PG_DIR=$(dirname $(pg_config --bindir))
+    echo "##########################$PG_DIR"
     # export CFLAGS='-I/usr/X11/include -L/usr/X11/lib'
     # --with-gd=/usr/local --with-jpeg-dir=/usr/local --with-png-dir=/usr/local --with-xpm-dir=/usr/X11
     ./configure --prefix=$ASDF_INSTALL_PATH \
