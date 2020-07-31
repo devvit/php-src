@@ -31,7 +31,7 @@ install() {
       --with-curl \
       --with-pgsql=$PG_DIR \
       --with-pdo-pgsql=$PG_DIR \
-      --with-openssl \
+      --with-openssl-dir=/usr/local/opt/openssl \
       --with-mysqli=shared,mysqlnd \
       --with-pdo-mysql=shared,mysqlnd \
       --with-mysql-sock=/tmp/mysql.sock
