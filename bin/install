@@ -18,8 +18,8 @@ install() {
     PG_DIR=$(dirname $(pg_config --bindir))
     # export CFLAGS='-I/usr/X11/include -L/usr/X11/lib'
     # --with-gd=/usr/local --with-jpeg-dir=/usr/local --with-png-dir=/usr/local --with-xpm-dir=/usr/X11
+    # --with-pear
     PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig ./configure --prefix=$install_dir \
-      --with-pear \
       --enable-fpm \
       --enable-sockets \
       --enable-bcmath \
