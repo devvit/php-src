@@ -23,6 +23,7 @@ install() {
       --enable-sockets \
       --enable-bcmath \
       --with-iconv=$MACOS_SDK \
+      --with-zlib \
       --with-zlib-dir=$MACOS_SDK \
       --with-expat \
       --enable-opcache=no \
