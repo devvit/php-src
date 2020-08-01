@@ -18,7 +18,6 @@ install() {
     PG_DIR=$(dirname $(pg_config --bindir))
     # export CFLAGS='-I/usr/X11/include -L/usr/X11/lib'
     # --with-gd=/usr/local --with-jpeg-dir=/usr/local --with-png-dir=/usr/local --with-xpm-dir=/usr/X11
-    # --with-openssl-dir=/usr/local/opt/openssl
     PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig ./configure --prefix=$install_dir \
       --enable-fpm \
       --enable-sockets \
@@ -51,6 +50,10 @@ install() {
   fi
 
   make -s install || exit 1
+  
+  bin_path=$install_dir/bin
+  $bin_path/php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+  $bin_path/php composer-setup.php --install-dir=$bin_path --filename=composer
 }
 
 install $ASDF_INSTALL_TYPE $ASDF_INSTALL_VERSION $ASDF_INSTALL_PATH
