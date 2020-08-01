@@ -24,7 +24,7 @@ install() {
       --enable-bcmath \
       --with-iconv=$MACOS_SDK \
       --with-zlib-dir=$MACOS_SDK \
-      --with-libxml-dir=$MACOS_SDK \
+      --with-expat \
       --enable-opcache=no \
       --enable-mbstring \
       --with-curl \
