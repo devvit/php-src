@@ -19,7 +19,7 @@ install() {
     # export CFLAGS='-I/usr/X11/include -L/usr/X11/lib'
     # --with-gd=/usr/local --with-jpeg-dir=/usr/local --with-png-dir=/usr/local --with-xpm-dir=/usr/X11
     # --with-openssl-dir=/usr/local/opt/openssl
-    PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig ./configure --prefix=$ASDF_INSTALL_PATH \
+    PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig ./configure --prefix=$install_dir \
       --enable-fpm \
       --enable-sockets \
       --enable-bcmath \
@@ -36,7 +36,7 @@ install() {
       --with-pdo-mysql=shared,mysqlnd \
       --with-mysql-sock=/tmp/mysql.sock
   else
-    ./configure --prefix=$ASDF_INSTALL_PATH \
+    ./configure --prefix=$install_dir \
       --enable-fpm \
       --enable-sockets \
       --enable-bcmath \
