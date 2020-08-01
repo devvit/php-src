@@ -53,8 +53,7 @@ install() {
   make -s install || exit 1
   
   bin_path=$install_dir/bin
-  # $bin_path/php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-  curl -fSL -J -o composer-setup.php https://getcomposer.org/installer
+  $bin_path/php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
   $bin_path/php composer-setup.php --install-dir=$bin_path --filename=composer
 }
 
