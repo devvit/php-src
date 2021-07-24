@@ -25,6 +25,7 @@ install() {
       --enable-fpm \
       --enable-sockets \
       --enable-bcmath \
+      --enable-gd \
       --with-iconv=$MACOS_SDK \
       --with-zlib \
       --with-zlib-dir=$MACOS_SDK \
