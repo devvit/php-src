@@ -21,6 +21,8 @@ install() {
     # --with-pear
     # --with-mysqli=shared,mysqlnd \
     # --with-pdo-mysql=shared,mysqlnd \
+    # --with-openssl \
+    # --with-openssl-dir=/usr/local/opt/openssl \
     PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig ./configure --prefix=$install_dir \
       --enable-fpm \
       --enable-sockets \
@@ -35,8 +37,6 @@ install() {
       --with-curl \
       --with-pgsql=$PG_DIR \
       --with-pdo-pgsql=$PG_DIR \
-      --with-openssl \
-      --with-openssl-dir=/usr/local/opt/openssl \
       --with-mysqli \
       --with-pdo-mysql \
       --with-mysql-sock=/tmp/mysql.sock
