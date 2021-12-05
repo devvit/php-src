@@ -33,6 +33,8 @@ install() {
       --enable-opcache=no \
       --enable-mbstring \
       --with-curl \
+      --with-openssl \
+      --with-openssl-dir=/usr/local/opt/openssl@1.1 \
       --with-pgsql=$PG_DIR \
       --with-pdo-pgsql=$PG_DIR \
       --with-mysqli \
