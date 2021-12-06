@@ -6,6 +6,7 @@ install() {
 
   build_dir=$(mktemp -d)
   cd $build_dir
+  echo $build_dir
 
   curl -fSL -JO https://www.php.net/distributions/php-$version.tar.gz
   tar -xzf php*.gz
