@@ -46,6 +46,7 @@ install() {
       --enable-opcache=no \
       --enable-mbstring \
       --with-openssl \
+      --with-pgsql=$PG_DIR \
       --with-mysqli \
       --with-pdo-mysql \
       --with-mysql-sock=/tmp/mysql.sock
