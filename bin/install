@@ -12,7 +12,6 @@ install() {
   tar -xzf php*.gz
   rm -rf php*.gz
   cd php*
-  sed -ie 's/test -f $ICONV_DIR\/$PHP_LIBDIR\/lib$iconv_lib_name.a ||/test -f $ICONV_DIR\/$PHP_LIBDIR\/lib$iconv_lib_name.a || test -f $ICONV_DIR\/$PHP_LIBDIR\/lib$iconv_lib_name.tbd ||/g' acinclude.m4
 
   platform=$(uname)
   if [ "$platform" == 'Darwin' ]; then
