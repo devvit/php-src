@@ -7,6 +7,15 @@ install() {
   build_dir=$(mktemp -d)
   cd $build_dir
   
+  # oniguruma
+  git clone https://github.com/kkos/oniguruma
+  cd oniguruma
+  ./autogen.sh
+  ./configure --prefix=$install_dir/oniguruma
+  make install || exit 1
+  
+  cd $build_dir
+  
   # openssl
   curl -fSL -O https://www.openssl.org/source/openssl-1.1.1l.tar.gz
   tar -xf openssl*.gz
@@ -14,15 +23,6 @@ install() {
   cd openssl*
   ./config --prefix=$install_dir/openssl
   make && make install_sw || exit 1
-  
-  cd $build_dir
-  
-  # oniguruma
-  git clone https://github.com/kkos/oniguruma
-  cd oniguruma
-  ./autogen.sh
-  ./configure --prefix=$install_dir/oniguruma
-  make install || exit 1
   
   cd $build_dir
 
