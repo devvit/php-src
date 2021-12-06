@@ -56,6 +56,7 @@ install() {
       --with-expat \
       --enable-opcache=no \
       --enable-mbstring \
+      --with-curl \
       --with-openssl \
       --with-pgsql=$PG_DIR \
       --with-pdo-pgsql=$PG_DIR \
