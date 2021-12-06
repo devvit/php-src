@@ -29,6 +29,7 @@ install() {
     # export CFLAGS='-I/usr/X11/include -L/usr/X11/lib'
     # --with-gd=/usr/local --with-jpeg-dir=/usr/local --with-png-dir=/usr/local --with-xpm-dir=/usr/X11
     # --with-pear
+    # --with-pgsql=$PG_DIR \
     # --with-pdo-pgsql=$PG_DIR \
     # --with-mysqli=shared,mysqlnd \
     # --with-pdo-mysql=shared,mysqlnd \
@@ -45,7 +46,6 @@ install() {
       --enable-opcache=no \
       --enable-mbstring \
       --with-openssl \
-      --with-pgsql=$PG_DIR \
       --with-mysqli \
       --with-pdo-mysql \
       --with-mysql-sock=/tmp/mysql.sock
