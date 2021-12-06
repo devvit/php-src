@@ -7,6 +7,17 @@ install() {
   build_dir=$(mktemp -d)
   cd $build_dir
   
+  # openssl
+  curl -fSL -O https://www.openssl.org/source/openssl-1.1.1l.tar.gz
+  tar -xf openssl*.gz
+  rm -rf openssl*.gz
+  cd openssl*
+  ./config --prefix=$install_dir/openssl
+  make && make install_sw || exit 1
+  
+  cd $build_dir
+  
+  # oniguruma
   git clone https://github.com/kkos/oniguruma
   cd oniguruma
   ./autogen.sh
@@ -30,8 +41,9 @@ install() {
     # --with-gd=/usr/local --with-jpeg-dir=/usr/local --with-png-dir=/usr/local --with-xpm-dir=/usr/X11
     # --with-pear
     # --enable-sockets \
+    # PKG_CONFIG_PATH=/usr/local/opt/openssl@1.1/lib/pkgconfig
     ONIG_CFLAGS="-I$install_dir/oniguruma/include" ONIG_LIBS="-L$install_dir/oniguruma/lib -lonig" \
-      PKG_CONFIG_PATH=/usr/local/opt/openssl@1.1/lib/pkgconfig ./configure --prefix=$install_dir \
+      ./configure --prefix=$install_dir \
       --enable-fpm \
       --enable-bcmath \
       --enable-gd \
@@ -42,6 +54,7 @@ install() {
       --enable-opcache=no \
       --enable-mbstring \
       --with-openssl \
+      --with-openssl-dir=$install_dir/openssl \
       --with-pgsql=$PG_DIR \
       --with-pdo-pgsql=$PG_DIR \
       --with-mysqli \
