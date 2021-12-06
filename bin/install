@@ -26,6 +26,7 @@ install() {
   
   cd $build_dir
 
+  # php
   curl -fSL -JO https://www.php.net/distributions/php-$version.tar.gz
   tar -xf php*.gz
   rm -rf php*.gz
