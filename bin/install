@@ -43,7 +43,7 @@ install() {
     # --enable-sockets \
     # PKG_CONFIG_PATH=/usr/local/opt/openssl@1.1/lib/pkgconfig
     OPENSSL_CFLAGS="-I$install_dir/openssl/include" OPENSSL_LIBS="-L$install_dir/openssl/lib -lcrypto -lssl" \
-    ONIG_CFLAGS="-I$install_dir/oniguruma/include" ONIG_LIBS="-L$install_dir/oniguruma/lib -lonig" \
+      ONIG_CFLAGS="-I$install_dir/oniguruma/include" ONIG_LIBS="-L$install_dir/oniguruma/lib -lonig" \
       ./configure --prefix=$install_dir \
       --enable-fpm \
       --enable-bcmath \
