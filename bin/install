@@ -22,7 +22,7 @@ install() {
   rm -rf openssl*.gz
   cd openssl*
   ./config --prefix=$install_dir/openssl
-  make && make install_sw || exit 1
+  make && make install || exit 1
   
   cd $build_dir
 
