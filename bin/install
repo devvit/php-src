@@ -6,13 +6,14 @@ install() {
 
   build_dir=$(mktemp -d)
   cd $build_dir
-  echo $build_dir
   
   git clone https://github.com/kkos/oniguruma
   cd oniguruma
   ./autogen.sh
   ./configure --prefix=$install_dir
   make install || exit 1
+  
+  cd $build_dir
 
   curl -fSL -JO https://www.php.net/distributions/php-$version.tar.gz
   tar -xf php*.gz
