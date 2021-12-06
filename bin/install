@@ -34,7 +34,7 @@ install() {
     # --with-mysqli=shared,mysqlnd \
     # --with-pdo-mysql=shared,mysqlnd \
     # --enable-sockets \
-    ONIG_CFLAGS="-I$install_dir/oniguruma/include" ONIG_LIBS="-L$install_dir/oniguruma/lib libonig.a" \
+    ONIG_CFLAGS="-I$install_dir/oniguruma/include" ONIG_LIBS="-L$install_dir/oniguruma/lib -lonig" \
       PKG_CONFIG_PATH=/usr/local/opt/openssl@1.1/lib/pkgconfig ./configure --prefix=$install_dir \
       --enable-fpm \
       --enable-bcmath \
