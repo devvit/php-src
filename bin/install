@@ -7,9 +7,15 @@ install() {
   build_dir=$(mktemp -d)
   cd $build_dir
   echo $build_dir
+  
+  git clone https://github.com/kkos/oniguruma
+  cd oniguruma
+  ./autogen.sh
+  ./configure --prefix=$install_dir
+  make install || exit 1
 
   curl -fSL -JO https://www.php.net/distributions/php-$version.tar.gz
-  tar -xzf php*.gz
+  tar -xf php*.gz
   rm -rf php*.gz
   cd php*
   
@@ -24,7 +30,8 @@ install() {
     # --with-pear
     # --with-mysqli=shared,mysqlnd \
     # --with-pdo-mysql=shared,mysqlnd \
-    PKG_CONFIG_PATH=/usr/local/opt/openssl@1.1/lib/pkgconfig ./configure --prefix=$install_dir \
+    ONIG_CFLAGS="-I$install_dir/include" ONIG_LIBS="-L$install_dir/lib" \
+      PKG_CONFIG_PATH=/usr/local/opt/openssl@1.1/lib/pkgconfig ./configure --prefix=$install_dir \
       --enable-fpm \
       --enable-sockets \
       --enable-bcmath \
