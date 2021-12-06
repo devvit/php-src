@@ -12,6 +12,8 @@ install() {
   tar -xzf php*.gz
   rm -rf php*.gz
   cd php*
+  
+  ./buildconf -f
 
   platform=$(uname)
   if [ "$platform" == 'Darwin' ]; then
