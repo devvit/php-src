@@ -24,6 +24,8 @@ install() {
   ./config --prefix=$install_dir/openssl
   make && make install || exit 1
   
+  curl -fSL -o $install_dir/openssl/ssl/cert.pem http://curl.haxx.se/ca/cacert.pem || exit 1
+  
   cd $build_dir
 
   # php
