@@ -62,7 +62,7 @@ install() {
       --enable-mbstring \
       --with-curl \
       --with-openssl \
-      --with-iodbc=/usr/local \
+      --with-unixODBC \
       --with-pdo-odbc=unixODBC \
       --with-pgsql=$PG_DIR \
       --with-pdo-pgsql=$PG_DIR \
