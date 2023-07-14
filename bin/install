@@ -64,7 +64,7 @@ install() {
       --with-openssl \
       --with-unixODBC \
       --with-pdo-odbc=unixODBC \
-      --with-pdo-dblib=/usr/local/opt/freetds \
+      --with-pdo-dblib=/usr/local \
       --with-pgsql=$PG_DIR \
       --with-pdo-pgsql=$PG_DIR \
       --with-mysqli \
