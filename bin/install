@@ -60,8 +60,11 @@ install() {
       --with-expat \
       --enable-opcache=no \
       --enable-mbstring \
+      --enable-gd \
+      --enable-soap \
       --with-curl \
       --with-openssl \
+      --with-gmp=/usr/local \
       --with-unixODBC \
       --with-pdo-odbc=unixODBC \
       --with-pdo-dblib=/usr/local \
