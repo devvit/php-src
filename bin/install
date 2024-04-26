@@ -8,7 +8,7 @@ install() {
   cd $build_dir
   
   # oniguruma
-  git clone https://github.com/kkos/oniguruma
+  git clone --depth 1 --recursive https://github.com/kkos/oniguruma
   cd oniguruma
   ./autogen.sh
   ./configure --prefix=$install_dir/oniguruma
