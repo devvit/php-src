@@ -16,17 +16,17 @@ install() {
   
   cd $build_dir
   
-  # openssl
-  # curl -fSL -O https://www.openssl.org/source/openssl-1.1.1l.tar.gz
-  # tar -xf openssl*.gz
-  # rm -rf openssl*.gz
-  # cd openssl*
-  # ./config --prefix=$install_dir/openssl
-  # make && make install || exit 1
+  openssl
+  curl -fSL -O https://www.openssl.org/source/openssl-1.1.1w.tar.gz
+  tar -xf openssl*.gz
+  rm -rf openssl*.gz
+  cd openssl*
+  ./config --prefix=$install_dir/openssl
+  make && make install || exit 1
   
-  # curl -fSL -o $install_dir/openssl/ssl/cert.pem http://curl.haxx.se/ca/cacert.pem || exit 1
+  curl -fSL -o $install_dir/openssl/ssl/cert.pem http://curl.haxx.se/ca/cacert.pem || exit 1
   
-  # cd $build_dir
+  cd $build_dir
 
   # php
   curl -fSL -JO https://www.php.net/distributions/php-$version.tar.gz
@@ -42,11 +42,11 @@ install() {
     PG_DIR=$(dirname $(pg_config --bindir))
     # export CFLAGS='-I/usr/X11/include -L/usr/X11/lib'
     # --with-gd=/usr/local --with-jpeg-dir=/usr/local --with-png-dir=/usr/local --with-xpm-dir=/usr/X11
-    # PKG_CONFIG_PATH=$install_dir/openssl/lib/pkgconfig
+    # PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig \
     # PKG_CONFIG_PATH=/usr/local/opt/openssl@1.1/lib/pkgconfig
-    # OPENSSL_CFLAGS="-I$install_dir/openssl/include" OPENSSL_LIBS="-L$install_dir/openssl/lib -lcrypto -lssl" \
     # PKG_CONFIG_PATH=/usr/local/opt/openssl@1.1/lib/pkgconfig \
-    PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig \
+    OPENSSL_CFLAGS="-I$install_dir/openssl/include" OPENSSL_LIBS="-L$install_dir/openssl/lib -lcrypto -lssl" \
+      PKG_CONFIG_PATH=$install_dir/openssl/lib/pkgconfig \
       ONIG_CFLAGS="-I$install_dir/oniguruma/include" ONIG_LIBS="-L$install_dir/oniguruma/lib -lonig" \
       ./configure --prefix=$install_dir \
       --with-pear \
