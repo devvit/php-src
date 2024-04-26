@@ -48,7 +48,6 @@ install() {
     # --with-gmp=/usr/local \
     # --with-unixODBC \
     # --with-pdo-odbc=unixODBC \
-    # --with-pdo-dblib=/usr/local \
     # --enable-gd \
     OPENSSL_CFLAGS="-I$install_dir/openssl/include" OPENSSL_LIBS="-L$install_dir/openssl/lib -lcrypto -lssl" \
       PKG_CONFIG_PATH=$install_dir/openssl/lib/pkgconfig \
@@ -58,7 +57,7 @@ install() {
       --enable-fpm \
       --enable-sockets \
       --enable-bcmath \
-      --with-iconv=$MACOS_SDK \
+      --with-iconv=$(dirname $(which iconv))/.. \
       --with-zlib \
       --with-zlib-dir=$MACOS_SDK \
       --with-expat \
