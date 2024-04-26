@@ -66,6 +66,7 @@ install() {
       --enable-mbstring \
       --enable-soap \
       --with-openssl \
+      --with-pdo-dblib=$(dirname $(which tsql))/.. \
       --with-pgsql=$PG_DIR \
       --with-pdo-pgsql=$PG_DIR \
       --with-mysqli \
